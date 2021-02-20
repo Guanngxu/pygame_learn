@@ -27,3 +27,15 @@ is_x = b.x + b.width  <= a.x + a.width and b.x + b.width >= a.x
 is_y = b.y +  b.height <= a.y + a.height and b.y + b.height >= a.y
 is_y and is_x
 ```
+
+## 自制按键原理
+
+按键在界面中是有长宽和位置的，比如现在有一个长和宽都为 100px 的按键图片，并且已经将其加载到了界面中 (0, 0) 的位置，那么我们可以获取鼠标点击时的位置，再比较鼠标点击的位置是否落在图片上即可：
+
+```python
+for event in pygame.event.get():
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        x, y = pygame.mouse.get_pos()
+        if 0 <= x <= 100 and 0 <= y <= 100:
+            print('点击了按钮')
+```
